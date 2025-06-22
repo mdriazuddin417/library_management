@@ -14,7 +14,7 @@ app.use((0, cors_1.default)());
 app.use('/api/books', book_controller_1.booksRoutes);
 app.use('/api/borrow', borrow_controller_1.borrowRoutes);
 app.get('/', (req, res) => {
-    res.send('Welcome to Note App');
+    res.send('Welcome to My Library');
 });
 app.use((req, res, next) => {
     const error = new Error(`Route ${req.originalUrl} not found`);

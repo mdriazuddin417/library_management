@@ -29,7 +29,6 @@ const bookSchema = new mongoose_1.Schema({
 });
 bookSchema.static('changeBookAvailability', function (bookId, quantity) {
     return __awaiter(this, void 0, void 0, function* () {
-        console.log('changeBookAvailability called with bookId:', bookId, 'and quantity:', quantity);
         const book = yield this.findById(bookId);
         if (!book)
             throw new Error('Book not found');

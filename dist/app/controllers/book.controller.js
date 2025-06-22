@@ -72,6 +72,12 @@ exports.booksRoutes.get('/:bookId', (req, res, next) => __awaiter(void 0, void 0
 }));
 exports.booksRoutes.put('/:bookId', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        if (req.body.copies > 0) {
+            req.body.available = true;
+        }
+        else {
+            req.body.available = false;
+        }
         const book = yield book_model_1.Book.findByIdAndUpdate(req.params.bookId, req.body, { new: true, runValidators: true });
         if (!book) {
             const err = new Error('Book not found');
