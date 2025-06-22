@@ -23,7 +23,6 @@ const bookSchema = new Schema<IBook,BookModelType>({
 });
 
 bookSchema.static('changeBookAvailability', async function (bookId: string, quantity: number) {
-  console.log('changeBookAvailability called with bookId:', bookId, 'and quantity:', quantity);
   const book = await this.findById(bookId);
   if (!book) throw new Error('Book not found');
   if (book.copies < quantity) {
@@ -42,4 +41,7 @@ bookSchema.static('changeBookAvailability', async function (bookId: string, quan
 
   await book.save();
 });
+
+
+
 export const Book = model<IBook,BookModelType>('Book', bookSchema);

@@ -67,6 +67,11 @@ booksRoutes.get('/:bookId', async (req, res, next) => {
 
 booksRoutes.put('/:bookId', async (req, res, next) => {
   try {
+    if (req.body.copies >0) {
+      req.body.available = true;
+    }else{
+      req.body.available = false;
+    }
     const book = await Book.findByIdAndUpdate(req.params.bookId, req.body, { new: true, runValidators: true });
     if (!book) {
       const err = new Error('Book not found');

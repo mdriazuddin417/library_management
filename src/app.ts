@@ -15,7 +15,7 @@ app.use('/api/borrow', borrowRoutes);
 
 
 app.get('/', (req: Request, res: Response) => {
-    res.send('Welcome to Note App');
+    res.send('Welcome to My Library');
 });
 
 

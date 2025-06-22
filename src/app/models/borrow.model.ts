@@ -34,8 +34,6 @@ borrowSchema.post('save', async function () {
   const bookResult = await Book.findById(borrow.book);
   if (!bookResult) return;
 
-  bookResult.copies = bookResult.copies - borrow.quantity;
-
   if (bookResult.copies <= 0) {
     bookResult.available = false;
     bookResult.copies = 0;
