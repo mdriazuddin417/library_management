@@ -9,7 +9,7 @@ export const borrowRoutes = express.Router()
 borrowRoutes.post('/', async (req: Request, res: Response, next: NextFunction) => {
     try {
         const borrowBody = borrowSchema.parse(req.body);
-       await Book.changeBookAvailability(borrowBody.book, borrowBody.quantity);
+        await Book.changeBookAvailability(borrowBody.book, borrowBody.quantity);
         const newBorrow = await Borrow.create(borrowBody);
         res.json({
             "success": true,
@@ -47,10 +47,9 @@ borrowRoutes.get('/', async (req: Request, res: Response, next: NextFunction) =>
                 $project: {
                     _id: 0,
                     totalQuantity: 1,
-                    book: {
-                        title: '$book.title',
-                        isbn: '$book.isbn',
-                    },
+                    title: '$book.title',
+                    isbn: '$book.isbn',
+
                 },
             },
         ]);
